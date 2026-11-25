@@ -2,9 +2,9 @@
 
 # ✈️ SkyStrike Bombers
 
-**Real-Time Multiplayer Tactical Airplanes & Bombers Game (*Avioane* Evolved)**
+**Real-Time Multiplayer Tactical Airplanes & Bombers Game (_Avioane_ Evolved)**
 
-*Deploy your squadron, scan enemy airspace, and launch tactical missiles in a real-time 2-player strategy game built with Laravel 13, Vue 3, Inertia v3, PostgreSQL, and Laravel Reverb WebSockets.*
+_Deploy your squadron, scan enemy airspace, and launch tactical missiles in a real-time 2-player strategy game built with Laravel 13, Vue 3, Inertia v3, PostgreSQL, and Laravel Reverb WebSockets._
 
 [![Laravel 13](https://img.shields.io/badge/Laravel-13-FF2D20?style=for-the-badge&logo=laravel&logoColor=white)](https://laravel.com)
 [![Vue 3](https://img.shields.io/badge/Vue-3-4FC08D?style=for-the-badge&logo=vue.js&logoColor=white)](https://vuejs.org)
@@ -20,18 +20,20 @@
 
 ## 🎯 About SkyStrike Bombers
 
-**SkyStrike Bombers** is an open-source, real-time online multiplayer adaptation of the classic paper-and-pencil **Airplanes (*Avioane*)** grid-guessing strategy game—upgraded with **4 distinct aircraft classes**, **5 tactical weapons**, **zero-signup guest play via shareable invite links**, **live presence over WebSockets**, and a **Hunt-and-Target AI Commander** for instant solo dogfights.
+**SkyStrike Bombers** is an open-source, real-time online multiplayer adaptation of the classic paper-and-pencil **Airplanes (_Avioane_)** grid-guessing strategy game—upgraded with **4 distinct aircraft classes**, **5 tactical weapons**, **zero-signup guest play via shareable invite links**, **live presence over WebSockets**, and a **Hunt-and-Target AI Commander** for instant solo dogfights.
 
-Just like classic *Avioane*, hitting a wing or fuselage damages the aircraft—while striking the **Cockpit (Head)** triggers an instant catastrophic kill!
+Just like classic _Avioane_, hitting a wing or fuselage damages the aircraft—while striking the **Cockpit (Head)** triggers an instant catastrophic kill!
 
 ---
 
 ## 📸 Screenshots
 
 ### Live Tactical Combat Room (12×12 Squadron Mode)
+
 ![SkyStrike Bombers Tactical Combat Room](docs/screenshots/combat.png)
 
 ### Air-Command Lobby (Guest Play, Invite Links & Public Missions)
+
 ![SkyStrike Bombers Command Center Lobby](docs/screenshots/lobby.png)
 
 ---
@@ -51,34 +53,34 @@ Just like classic *Avioane*, hitting a wing or fuselage damages the aircraft—w
 
 Every aircraft can be rotated in 4 cardinal directions (`N`, `E`, `S`, `W` via `R` or Right-Click) during fleet deployment:
 
-| Aircraft Class | Size | Cockpit HP | Tactical Passive |
-| :--- | :---: | :---: | :--- |
-| **Interceptor** | 6 cells | 1 HP | Compact delta frame; grants **+1 Radar Recon** charge |
-| **Fighter-Bomber** | 10 cells | 1 HP | Iconic classic *Avioane* cross silhouette; grants **+1 Cluster Bomb** charge |
-| **Stealth Bomber** | 8 cells | 1 HP | **Radar Cloak** — completely invisible to enemy Radar Recon sweeps |
-| **Heavy Stratofortress** | 13 cells | **2 HP** | **Reinforced Armored Cockpit** — survives 1 non-EMP cockpit hit (alerts attacker `CRACKED`) + grants **+1 Carpet Bomb** |
+| Aircraft Class           |   Size   | Cockpit HP | Tactical Passive                                                                                                        |
+| :----------------------- | :------: | :--------: | :---------------------------------------------------------------------------------------------------------------------- |
+| **Interceptor**          | 6 cells  |    1 HP    | Compact delta frame; grants **+1 Radar Recon** charge                                                                   |
+| **Fighter-Bomber**       | 10 cells |    1 HP    | Iconic classic _Avioane_ cross silhouette; grants **+1 Cluster Bomb** charge                                            |
+| **Stealth Bomber**       | 8 cells  |    1 HP    | **Radar Cloak** — completely invisible to enemy Radar Recon sweeps                                                      |
+| **Heavy Stratofortress** | 13 cells |  **2 HP**  | **Reinforced Armored Cockpit** — survives 1 non-EMP cockpit hit (alerts attacker `CRACKED`) + grants **+1 Carpet Bomb** |
 
 ---
 
 ## 🚀 Tactical Ordnance Arsenal
 
-| Weapon | Pattern | Special Mechanics |
-| :--- | :---: | :--- |
-| **Standard SAM** | `1×1` | Unlimited precision strike. Instant cockpit kill on 1-HP aircraft; cracks Heavy armor. |
-| **Radar Recon Pulse** | `3×3` | Non-lethal scan returning the exact count of non-stealth aircraft cells in the zone. |
-| **Cluster Bomb** | `+` (5 cells) | Cross-pattern blast ideal for finding silhouettes; cracks but cannot instant-kill cockpits. |
-| **Carpet Bomb** | `1×4` (H / V) | Rotatable line strike (`R` key) designed to slice across wings and fuselages. |
-| **EMP Bunker-Buster** | `2×2` | **Armor-Piercing** (one-shots Heavy Stratofortress cockpits!) and **EMP-jams** the opponent's special weapons for 1 turn. |
+| Weapon                |    Pattern    | Special Mechanics                                                                                                         |
+| :-------------------- | :-----------: | :------------------------------------------------------------------------------------------------------------------------ |
+| **Standard SAM**      |     `1×1`     | Unlimited precision strike. Instant cockpit kill on 1-HP aircraft; cracks Heavy armor.                                    |
+| **Radar Recon Pulse** |     `3×3`     | Non-lethal scan returning the exact count of non-stealth aircraft cells in the zone.                                      |
+| **Cluster Bomb**      | `+` (5 cells) | Cross-pattern blast ideal for finding silhouettes; cracks but cannot instant-kill cockpits.                               |
+| **Carpet Bomb**       | `1×4` (H / V) | Rotatable line strike (`R` key) designed to slice across wings and fuselages.                                             |
+| **EMP Bunker-Buster** |     `2×2`     | **Armor-Piercing** (one-shots Heavy Stratofortress cockpits!) and **EMP-jams** the opponent's special weapons for 1 turn. |
 
 ---
 
 ## 🎮 Game Modes
 
-| Mode | Grid | Fleet | Rules |
-| :--- | :---: | :--- | :--- |
-| **Tactical Squadron** *(Default)* | `12×12` | 1 Heavy, 1 Stealth, 1 Fighter, 1 Interceptor | Full 5-weapon arsenal, configurable turn timer |
-| **Classic Avioane** | `10×10` | 3× Classic Fighter-Bombers | Pure nostalgia — Standard SAM missiles only |
-| **Blitz Dogfight** | `10×10` | 1 Fighter, 1 Stealth, 1 Interceptor | Fast 25s turn timer + Bonus Turn on Cockpit Kill |
+| Mode                              |  Grid   | Fleet                                        | Rules                                            |
+| :-------------------------------- | :-----: | :------------------------------------------- | :----------------------------------------------- |
+| **Tactical Squadron** _(Default)_ | `12×12` | 1 Heavy, 1 Stealth, 1 Fighter, 1 Interceptor | Full 5-weapon arsenal, configurable turn timer   |
+| **Classic Avioane**               | `10×10` | 3× Classic Fighter-Bombers                   | Pure nostalgia — Standard SAM missiles only      |
+| **Blitz Dogfight**                | `10×10` | 1 Fighter, 1 Stealth, 1 Interceptor          | Fast 25s turn timer + Bonus Turn on Cockpit Kill |
 
 ---
 
@@ -94,6 +96,7 @@ Every aircraft can be rotated in 4 cardinal directions (`N`, `E`, `S`, `W` via `
 ## 🚀 Quick Start (Local Development)
 
 ### Prerequisites
+
 - PHP 8.3+ (tested on PHP 8.5) with `pdo_pgsql`
 - Composer & Node.js 20+
 - PostgreSQL 15+

@@ -89,14 +89,21 @@ function readCsrfToken(): string {
 }
 
 async function apiPost<T>(url: string, payload: unknown = {}): Promise<T> {
+    const socketId = getEcho()?.socketId();
+    const headers: Record<string, string> = {
+        'Content-Type': 'application/json',
+        Accept: 'application/json',
+        'X-XSRF-TOKEN': readCsrfToken(),
+    };
+
+    if (socketId) {
+        headers['X-Socket-ID'] = socketId;
+    }
+
     const response = await fetch(url, {
         method: 'POST',
         credentials: 'same-origin',
-        headers: {
-            'Content-Type': 'application/json',
-            Accept: 'application/json',
-            'X-XSRF-TOKEN': readCsrfToken(),
-        },
+        headers,
         body: JSON.stringify(payload),
     });
 
@@ -492,7 +499,10 @@ async function handleSendMessage(
                 is_emote: isEmote,
             },
         );
-        game.value.messages.push(msg);
+
+        if (!game.value.messages.some((m) => m.id === msg.id)) {
+            game.value.messages.push(msg);
+        }
     } catch {
         // Ignore chat errors
     }
