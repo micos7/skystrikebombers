@@ -11,8 +11,9 @@ import { email } from '@/routes/password';
 
 defineOptions({
     layout: {
-        title: 'Forgot password',
-        description: 'Enter your email to receive a password reset link',
+        title: 'Recover Access',
+        description:
+            'Enter your email address to receive a password reset transmission',
     },
 });
 
@@ -22,33 +23,39 @@ defineProps<{
 </script>
 
 <template>
-    <Head title="Forgot password" />
+    <Head title="Forgot Password — SkyStrike Bombers" />
 
     <div
         v-if="status"
-        class="mb-4 text-center text-sm font-medium text-green-600"
+        class="mb-4 rounded-lg border border-emerald-500/35 bg-emerald-500/10 px-3 py-2 text-center text-xs font-medium text-emerald-300"
     >
         {{ status }}
     </div>
 
-    <div class="space-y-6">
+    <div class="space-y-5">
         <Form v-bind="email.form()" v-slot="{ errors, processing }">
-            <div class="grid gap-2">
-                <Label for="email">Email address</Label>
+            <div class="grid gap-1.5">
+                <Label
+                    for="email"
+                    class="font-mono text-[11px] tracking-wider text-slate-300 uppercase"
+                >
+                    Email address
+                </Label>
                 <Input
                     id="email"
                     type="email"
                     name="email"
                     autocomplete="off"
                     v-focus
-                    placeholder="email@example.com"
+                    placeholder="pilot@bombers.test"
+                    class="border-slate-700 bg-slate-950 text-slate-100 placeholder:text-slate-500 focus-visible:border-emerald-400 focus-visible:ring-emerald-400/25"
                 />
                 <InputError :message="errors.email" />
             </div>
 
-            <div class="my-6 flex items-center justify-start">
+            <div class="mt-5 flex items-center justify-start">
                 <Button
-                    class="w-full"
+                    class="w-full rounded-xl bg-emerald-500 py-2.5 font-mono text-xs font-bold tracking-wider text-slate-950 uppercase shadow-lg shadow-emerald-500/25 transition hover:bg-emerald-400"
                     :disabled="processing"
                     data-test="email-password-reset-link-button"
                 >
@@ -58,9 +65,16 @@ defineProps<{
             </div>
         </Form>
 
-        <div class="space-x-1 text-center text-sm text-muted-foreground">
-            <span>Or, return to</span>
-            <TextLink :href="login()">log in</TextLink>
+        <div
+            class="border-t border-slate-800 pt-4 text-center text-xs text-slate-400"
+        >
+            <span>Remembered your credentials?</span>
+            <TextLink
+                :href="login()"
+                class="ml-1 font-mono font-semibold text-emerald-300 decoration-emerald-400/50 hover:text-emerald-200"
+            >
+                Return to log in
+            </TextLink>
         </div>
     </div>
 </template>

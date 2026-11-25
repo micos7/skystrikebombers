@@ -9,28 +9,33 @@ import { store } from '@/routes/password/confirm';
 
 defineOptions({
     layout: {
-        title: 'Confirm password',
+        title: 'Confirm Clearance',
         description:
-            'This is a secure area of the application. Please confirm your password before continuing.',
+            'This is a restricted sector. Confirm your password before proceeding.',
     },
 });
 </script>
 
 <template>
-    <Head title="Confirm password" />
+    <Head title="Confirm Password — SkyStrike Bombers" />
 
     <Form
         v-bind="store.form()"
         reset-on-success
         v-slot="{ errors, processing }"
     >
-        <div class="space-y-6">
-            <div class="grid gap-2">
-                <Label htmlFor="password">Password</Label>
+        <div class="space-y-5">
+            <div class="grid gap-1.5">
+                <Label
+                    htmlFor="password"
+                    class="font-mono text-[11px] tracking-wider text-slate-300 uppercase"
+                >
+                    Password
+                </Label>
                 <PasswordInput
                     id="password"
                     name="password"
-                    class="mt-1 block w-full"
+                    class="block w-full border-slate-700 bg-slate-950 text-slate-100 placeholder:text-slate-500 focus-visible:border-emerald-400 focus-visible:ring-emerald-400/25"
                     required
                     autocomplete="current-password"
                     autofocus
@@ -41,7 +46,7 @@ defineOptions({
 
             <div class="flex items-center">
                 <Button
-                    class="w-full"
+                    class="w-full rounded-xl bg-emerald-500 py-2.5 font-mono text-xs font-bold tracking-wider text-slate-950 uppercase shadow-lg shadow-emerald-500/25 transition hover:bg-emerald-400"
                     :disabled="processing"
                     data-test="confirm-password-button"
                 >

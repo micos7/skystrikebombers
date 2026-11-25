@@ -14,8 +14,9 @@ import { request } from '@/routes/password';
 
 defineOptions({
     layout: {
-        title: 'Log in to your account',
-        description: 'Enter your email and password below to log in',
+        title: 'Pilot Sign In',
+        description:
+            'Authenticate to track your squadron record across missions',
     },
 });
 
@@ -26,11 +27,11 @@ defineProps<{
 </script>
 
 <template>
-    <Head title="Log in" />
+    <Head title="Pilot Sign In — SkyStrike Bombers" />
 
     <div
         v-if="status"
-        class="mb-4 text-center text-sm font-medium text-green-600"
+        class="mb-4 rounded-lg border border-emerald-500/35 bg-emerald-500/10 px-3 py-2 text-center text-xs font-medium text-emerald-300"
     >
         {{ status }}
     </div>
@@ -39,11 +40,16 @@ defineProps<{
         v-bind="store.form()"
         :reset-on-success="['password']"
         v-slot="{ errors, processing }"
-        class="flex flex-col gap-6"
+        class="flex flex-col gap-5"
     >
-        <div class="grid gap-6">
-            <div class="grid gap-2">
-                <Label for="email">Email address</Label>
+        <div class="grid gap-4">
+            <div class="grid gap-1.5">
+                <Label
+                    for="email"
+                    class="font-mono text-[11px] tracking-wider text-slate-300 uppercase"
+                >
+                    Email address
+                </Label>
                 <Input
                     id="email"
                     type="email"
@@ -52,21 +58,27 @@ defineProps<{
                     v-focus
                     :tabindex="1"
                     autocomplete="email"
-                    placeholder="email@example.com"
+                    placeholder="pilot@bombers.test"
+                    class="border-slate-700 bg-slate-950 text-slate-100 placeholder:text-slate-500 focus-visible:border-emerald-400 focus-visible:ring-emerald-400/25"
                 />
                 <InputError :message="errors.email" />
             </div>
 
-            <div class="grid gap-2">
+            <div class="grid gap-1.5">
                 <div class="flex items-center justify-between">
-                    <Label for="password">Password</Label>
+                    <Label
+                        for="password"
+                        class="font-mono text-[11px] tracking-wider text-slate-300 uppercase"
+                    >
+                        Password
+                    </Label>
                     <TextLink
                         v-if="canResetPassword"
                         :href="request()"
-                        class="text-sm"
+                        class="font-mono text-[11px] text-emerald-300 decoration-emerald-400/50 hover:text-emerald-200"
                         :tabindex="5"
                     >
-                        Forgot your password?
+                        Forgot password?
                     </TextLink>
                 </div>
                 <PasswordInput
@@ -75,21 +87,30 @@ defineProps<{
                     required
                     :tabindex="2"
                     autocomplete="current-password"
-                    placeholder="Password"
+                    placeholder="••••••••"
+                    class="border-slate-700 bg-slate-950 text-slate-100 placeholder:text-slate-500 focus-visible:border-emerald-400 focus-visible:ring-emerald-400/25"
                 />
                 <InputError :message="errors.password" />
             </div>
 
-            <div class="flex items-center justify-between">
-                <Label for="remember" class="flex items-center space-x-3">
-                    <Checkbox id="remember" name="remember" :tabindex="3" />
-                    <span>Remember me</span>
+            <div class="flex items-center justify-between pt-1">
+                <Label
+                    for="remember"
+                    class="flex cursor-pointer items-center space-x-2.5 text-xs text-slate-300"
+                >
+                    <Checkbox
+                        id="remember"
+                        name="remember"
+                        :tabindex="3"
+                        class="border-slate-600 bg-slate-950 data-[state=checked]:border-emerald-400 data-[state=checked]:bg-emerald-500 data-[state=checked]:text-slate-950"
+                    />
+                    <span>Remember me on this terminal</span>
                 </Label>
             </div>
 
             <Button
                 type="submit"
-                class="mt-4 w-full"
+                class="mt-2 w-full rounded-xl bg-emerald-500 py-2.5 font-mono text-xs font-bold tracking-wider text-slate-950 uppercase shadow-lg shadow-emerald-500/25 transition hover:bg-emerald-400"
                 :tabindex="4"
                 :disabled="processing"
                 data-test="login-button"
@@ -99,9 +120,17 @@ defineProps<{
             </Button>
         </div>
 
-        <div class="text-center text-sm text-muted-foreground">
-            Don't have an account?
-            <TextLink :href="register()" :tabindex="5">Sign up</TextLink>
+        <div
+            class="border-t border-slate-800 pt-4 text-center text-xs text-slate-400"
+        >
+            New pilot?
+            <TextLink
+                :href="register()"
+                :tabindex="5"
+                class="font-mono font-semibold text-emerald-300 decoration-emerald-400/50 hover:text-emerald-200"
+            >
+                Create an account
+            </TextLink>
         </div>
     </Form>
 </template>
